@@ -1,5 +1,3 @@
-# [content-engine-lib]
-
 # Content-Engine 🚀
 
 **Content-Engine** is a modular and extensible system for managing content.  
