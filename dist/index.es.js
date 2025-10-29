@@ -30,6 +30,7 @@ let r = {
           if (l.startsWith("./") || l.startsWith("../")) {
             const b = await import(
               /* @vite-ignore */
+              /* webpackIgnore: true */
               `${l}`
             );
             r.lib.l[`${_}`] = {
@@ -39,6 +40,7 @@ let r = {
           if (l.startsWith("http://") || l.startsWith("https://")) {
             const b = await import(
               /* @vite-ignore */
+              /* webpackIgnore: true */
               `${l}`
             );
             r.lib.l[`${_}`] = {
