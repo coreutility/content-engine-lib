@@ -1,4 +1,4 @@
-const w = () => ({
+const x = () => ({
   set: () => "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function(t) {
     const n = Math.random() * 16 | 0;
     return (t == "x" ? n : n & 3 | 8).toString(16);
@@ -7,7 +7,7 @@ const w = () => ({
   f: {
     name: (t) => `${t.name}${t.id}`
   }
-}), x = async () => ({
+}), w = async () => ({
   set: async (t) => {
     console.log("--theme");
     try {
@@ -45,7 +45,7 @@ const w = () => ({
     }
   }
 });
-function g(t, n = 1e3) {
+function h(t, n = 1e3) {
   let a = {
     cnt: 0
   };
@@ -126,7 +126,7 @@ let s = {
     get_all: async (t) => s.lib.l
   }
 };
-const h = async (t) => {
+const g = async (t) => {
   const n = await m();
   return await s.lib.set({ lib: t.lib, run_from: "renderer", lazy_lib: t.lazy_lib }), {
     set: async (a, c) => {
@@ -140,7 +140,8 @@ const h = async (t) => {
           const d = await (await (await (await s.lib.get({ name: i.type, run_from: "renderer", lazy_lib: t.lazy_lib })).lib).index({
             f: {
               name: (e) => n.f.name({ id: i.id, name: e }),
-              get_lib: async (e) => await await s.lib.get({ name: e.name, run_from: e.run_from, lazy_lib: t.lazy_lib })
+              get_lib: async (e) => await await s.lib.get({ name: e.name, run_from: e.run_from, lazy_lib: t.lazy_lib }),
+              set_theme: async (e) => await (await w()).set(e)
             }
           })).set({
             data: {
@@ -167,7 +168,7 @@ const h = async (t) => {
             f: {
               name: (e) => n.f.name({ id: i.id, name: e }),
               get_lib: async (e) => await await s.lib.get({ name: e.name, run_from: e.run_from, lazy_lib: t.lazy_lib }),
-              set_theme: async (e) => await (await x()).set(e)
+              set_theme: async (e) => await (await w()).set(e)
             }
           })).set({
             data: {
@@ -177,7 +178,7 @@ const h = async (t) => {
           r.style += d.style;
         }
       };
-      return await g(
+      return await h(
         () => document.readyState === "complete" || typeof window < "u",
         50
       ), await o(), r;
@@ -190,7 +191,7 @@ const h = async (t) => {
       data: {
         l: [
           {
-            id: w().set(),
+            id: x().set(),
             type: "editor",
             data: {
               l: []
@@ -202,7 +203,7 @@ const h = async (t) => {
       r: "",
       style: ""
     };
-    const o = h, i = $, l = await o({
+    const o = g, i = $, l = await o({
       lib: t.lib,
       lazy_lib: t.lazy_lib
     }), d = await i({
@@ -231,5 +232,5 @@ const h = async (t) => {
 export {
   z as ce_editor,
   $ as ce_hydrator,
-  h as ce_renderer
+  g as ce_renderer
 };
