@@ -9,6 +9,7 @@ const w = () => ({
   }
 }), x = async () => ({
   set: async (t) => {
+    console.log("--theme");
     try {
       if (!t.el_id)
         throw new Error("[el_id] is required");
