@@ -1,79 +1,115 @@
-const m = () => ({
+const w = () => ({
   set: () => "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function(t) {
     const n = Math.random() * 16 | 0;
     return (t == "x" ? n : n & 3 | 8).toString(16);
   })
-}), d = async () => ({
+}), m = async () => ({
   f: {
     name: (t) => `${t.name}${t.id}`
   }
+}), x = async () => ({
+  set: async (t) => {
+    try {
+      if (!t.el_id)
+        throw new Error("[el_id] is required");
+      const n = t.name, a = document.getElementById(t.el_id);
+      if (!a)
+        throw new Error("[el_id] is invalid");
+      ((c) => {
+        const r = (o) => {
+          ((i) => {
+            const l = i.getAttribute("data-ce");
+            if (!l)
+              return;
+            const e = JSON.parse(l).filter((_) => _?.k.startsWith("t-"));
+            if (e.length != 0)
+              for (const _ of e) {
+                const y = _.k, f = _.v.split(" ");
+                if (y == `t-${n}-class`)
+                  for (const u of f)
+                    i.classList.add(u);
+                else
+                  for (const u of f)
+                    i.classList.remove(u);
+              }
+          })(o);
+        };
+        for (const o of c.getElementsByTagName("*"))
+          r(o);
+        r(c);
+      })(a);
+    } catch (n) {
+      const a = `err: [theme] ${n}`;
+      throw console.log(a), a;
+    }
+  }
 });
-function f(t, n = 1e3) {
-  let l = {
+function g(t, n = 1e3) {
+  let a = {
     cnt: 0
   };
-  return new Promise((o) => {
-    const e = () => {
-      console.log(`[setInterval] is running.. [count=${l.cnt}]`);
+  return new Promise((c) => {
+    const r = () => {
+      console.log(`[setInterval] is running.. [count=${a.cnt}]`);
       try {
-        t() && (clearInterval(c), o());
+        t() && (clearInterval(o), c());
       } catch {
         console.log(`warn: [wait_until] ignoring the exception in setInterval and will check again after [interval=${n}]`);
       }
-      l.cnt += 1;
-    }, c = setInterval(() => {
-      e();
+      a.cnt += 1;
+    }, o = setInterval(() => {
+      r();
     }, n);
-    e();
+    r();
   });
 }
 console.log("content_engine_lib");
-let r = {
+let s = {
   lib: {
     inbuilt_lib: [],
     // <any>[], // [`text`,`table`,`editor`]
     l: {},
     set: async (t) => {
       const n = t?.lib || [];
-      for (const [l, o] of n.entries()) {
-        const e = o, c = `${e.name}:${t.run_from}`, s = `${t.run_from}_src`;
-        let i = e[s];
-        const _ = `${t.run_from}_src`;
-        let a = t?.lazy_lib?.[_] || null;
-        if (a && (a = a.replace("{*}", `${e.name}`)), console.log(`_lazy_src: ${a}`), console.log(`_src: ${i}`), r.lib.l.hasOwnProperty(`${c}`) == !1) {
-          if (/^[a-zA-Z0-9]/.test(i) && i.includes("/") == !1 && r.lib.inbuilt_lib.indexOf(`${e.name}`) === -1)
-            if (a)
-              i = a;
+      for (const [a, c] of n.entries()) {
+        const r = c, o = `${r.name}:${t.run_from}`, i = `${t.run_from}_src`;
+        let l = r[i];
+        const d = `${t.run_from}_src`;
+        let e = t?.lazy_lib?.[d] || null;
+        if (e && (e = e.replace("{*}", `${r.name}`)), console.log(`_lazy_src: ${e}`), console.log(`_src: ${l}`), s.lib.l.hasOwnProperty(`${o}`) == !1) {
+          if (/^[a-zA-Z0-9]/.test(l) && l.includes("/") == !1 && s.lib.inbuilt_lib.indexOf(`${r.name}`) === -1)
+            if (e)
+              l = e;
             else
-              throw `[lib-name=${e.name},lib-src=${i}] not allowed or available in in-build mode. Need to use lazy-lib config.`;
-          if (i.startsWith("./") || i.startsWith("../")) {
-            const b = await import(
+              throw `[lib-name=${r.name},lib-src=${l}] not allowed or available in in-build mode. Need to use lazy-lib config.`;
+          if (l.startsWith("./") || l.startsWith("../")) {
+            const _ = await import(
               /* @vite-ignore */
               /* webpackIgnore: true */
-              `${i}`
+              `${l}`
             );
-            r.lib.l[`${c}`] = {
-              lib: b
+            s.lib.l[`${o}`] = {
+              lib: _
             };
           }
-          if (i.startsWith("http://") || i.startsWith("https://")) {
-            const b = await import(
+          if (l.startsWith("http://") || l.startsWith("https://")) {
+            const _ = await import(
               /* @vite-ignore */
               /* webpackIgnore: true */
-              `${i}`
+              `${l}`
             );
-            r.lib.l[`${c}`] = {
-              lib: b
+            s.lib.l[`${o}`] = {
+              lib: _
             };
           }
         }
       }
-      console.log(await r.lib.get_all({}));
+      console.log(await s.lib.get_all({}));
     },
     get: async (t) => {
       let n = null;
-      const l = `${t.name}:${t.run_from}`;
-      return r.lib.l.hasOwnProperty(`${l}`) == !1 && await r.lib.set({
+      const a = `${t.name}:${t.run_from}`;
+      return s.lib.l.hasOwnProperty(`${a}`) == !1 && await s.lib.set({
         lib: [
           {
             renderer_src: t.name,
@@ -84,75 +120,76 @@ let r = {
         ],
         run_from: t.run_from,
         lazy_lib: t.lazy_lib
-      }), n = r.lib.l[`${l}`], n;
+      }), n = s.lib.l[`${a}`], n;
     },
-    get_all: async (t) => r.lib.l
+    get_all: async (t) => s.lib.l
   }
 };
-const x = async (t) => {
-  const n = await d();
-  return await r.lib.set({ lib: t.lib, run_from: "renderer", lazy_lib: t.lazy_lib }), {
-    set: async (l, o) => {
+const h = async (t) => {
+  const n = await m();
+  return await s.lib.set({ lib: t.lib, run_from: "renderer", lazy_lib: t.lazy_lib }), {
+    set: async (a, c) => {
       console.log("--renderer [set]");
-      let e = {
+      let r = {
         r: "",
         style: ""
       };
       return await (async () => {
-        for (const s of l.data?.value?.l || l.data.l) {
-          const _ = await (await (await (await r.lib.get({ name: s.type, run_from: "renderer", lazy_lib: t.lazy_lib })).lib).index({
+        for (const i of a.data?.value?.l || a.data.l) {
+          const d = await (await (await (await s.lib.get({ name: i.type, run_from: "renderer", lazy_lib: t.lazy_lib })).lib).index({
             f: {
-              name: (a) => n.f.name({ id: s.id, name: a }),
-              get_lib: async (a) => await await r.lib.get({ name: a.name, run_from: a.run_from, lazy_lib: t.lazy_lib })
+              name: (e) => n.f.name({ id: i.id, name: e }),
+              get_lib: async (e) => await await s.lib.get({ name: e.name, run_from: e.run_from, lazy_lib: t.lazy_lib })
             }
           })).set({
             data: {
-              curr: s
+              curr: i
             }
-          }, o);
-          e.r += _.r, e.style += _.style;
+          }, c);
+          r.r += d.r, r.style += d.style;
         }
-      })(), e;
+      })(), r;
     }
   };
-}, w = async (t) => {
-  const n = await d();
-  return await r.lib.set({ lib: t.lib, run_from: "hydrator", lazy_lib: t.lazy_lib }), {
-    set: async (l, o) => {
+}, $ = async (t) => {
+  const n = await m();
+  return await s.lib.set({ lib: t.lib, run_from: "hydrator", lazy_lib: t.lazy_lib }), {
+    set: async (a, c) => {
       console.log("--hydrator [set]");
-      let e = {
+      let r = {
         r: "",
         style: ""
       };
-      const c = async () => {
-        for (const s of l.data?.value?.l || l.data.l) {
-          const _ = await (await (await (await r.lib.get({ name: s.type, run_from: "hydrator", lazy_lib: t.lazy_lib })).lib).index({
+      const o = async () => {
+        for (const i of a.data?.value?.l || a.data.l) {
+          const d = await (await (await (await s.lib.get({ name: i.type, run_from: "hydrator", lazy_lib: t.lazy_lib })).lib).index({
             f: {
-              name: (a) => n.f.name({ id: s.id, name: a }),
-              get_lib: async (a) => await await r.lib.get({ name: a.name, run_from: a.run_from, lazy_lib: t.lazy_lib })
+              name: (e) => n.f.name({ id: i.id, name: e }),
+              get_lib: async (e) => await await s.lib.get({ name: e.name, run_from: e.run_from, lazy_lib: t.lazy_lib }),
+              set_theme: async (e) => await (await x()).set(e)
             }
           })).set({
             data: {
-              curr: s
+              curr: i
             }
-          }, o);
-          e.style += _.style;
+          }, c);
+          r.style += d.style;
         }
       };
-      return await f(
+      return await g(
         () => document.readyState === "complete" || typeof window < "u",
         50
-      ), await c(), e;
+      ), await o(), r;
     }
   };
-}, g = async (t) => (await d(), await r.lib.set({ lib: t.lib, run_from: "editor", lazy_lib: t.lazy_lib }), {
-  set: async (n, l) => {
+}, z = async (t) => (await m(), await s.lib.set({ lib: t.lib, run_from: "editor", lazy_lib: t.lazy_lib }), {
+  set: async (n, a) => {
     console.log("--editor [set]");
-    let o = {
+    let c = {
       data: {
         l: [
           {
-            id: m().set(),
+            id: w().set(),
             type: "editor",
             data: {
               l: []
@@ -160,38 +197,38 @@ const x = async (t) => {
           }
         ]
       }
-    }, e = {
+    }, r = {
       r: "",
       style: ""
     };
-    const c = x, s = w, i = await c({
+    const o = h, i = $, l = await o({
       lib: t.lib,
       lazy_lib: t.lazy_lib
-    }), _ = await s({
+    }), d = await i({
       lib: t.lib,
       lazy_lib: t.lazy_lib
-    }), a = await i.set({
-      data: o.data
+    }), e = await l.set({
+      data: c.data
     });
     return (async () => {
-      const b = await _.set({
-        data: o.data
+      const _ = await d.set({
+        data: c.data
       }, {
         change: (y) => {
-          l?.change(y);
+          a?.change(y);
         }
       });
       ((y) => {
-        const u = document.createElement("style");
-        u.innerHTML = `${b.style}`, y.appendChild(u);
+        const b = document.createElement("style");
+        b.innerHTML = `${_.style}`, y.appendChild(b);
       })(document.head);
-    })(), e.r = a.r, e.style = `
-            ${a.style}
-            `, e;
+    })(), r.r = e.r, r.style = `
+            ${e.style}
+            `, r;
   }
 });
 export {
-  g as ce_editor,
-  w as ce_hydrator,
-  x as ce_renderer
+  z as ce_editor,
+  $ as ce_hydrator,
+  h as ce_renderer
 };

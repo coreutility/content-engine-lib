@@ -5,6 +5,10 @@ type _p_TYP = {
             name: string;
             run_from: any;
         }) => any;
+        set_theme: (v: {
+            name: string;
+            el_id: string;
+        }) => any;
     };
 };
 type _$p_TYP = {
