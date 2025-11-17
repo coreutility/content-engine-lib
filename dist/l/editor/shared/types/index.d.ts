@@ -9,6 +9,7 @@ type _p_TYP = {
             name: string;
             el_id: string;
         }) => any;
+        path: (v: string) => string;
     };
 };
 type _$p_TYP = {
