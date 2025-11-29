@@ -7,6 +7,7 @@ declare const renderer: (_p: renderer_p_TYP) => Promise<{
     }, _$cb?: {}) => Promise<{
         r: string;
         style: string;
+        head: string;
     }>;
 }>;
 declare const hydrator: (_p: hydrator_p_TYP) => Promise<{
