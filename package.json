@@ -1,5 +1,5 @@
 {
-  "name": "content_engine_lib",
+  "name": "ce-lib",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
