@@ -1,6 +1,10 @@
 {
   "name": "content-engine-lib",
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "description": "A lightweight library for content engine functionality",
+  "keywords": ["content", "engine", "library"],
+  "author": "Coreutility",
+  "license": "MIT",
   "type": "module",
   "scripts": {
     "dev": "vite",
