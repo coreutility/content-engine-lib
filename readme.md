@@ -2,8 +2,4 @@
 
 **Content-Engine** is a modular and extensible system for managing content.  
 
-📄 We will release **comprehensive documentation** for Content-Engine soon.
-
-✨ Stay tuned for updates!
-
-
+🔗 **Documentation:** https://github.com/coreutility/content-engine
