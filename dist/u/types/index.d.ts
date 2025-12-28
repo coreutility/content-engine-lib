@@ -20,4 +20,4 @@ type renderer_p_TYP = {
 };
 type hydrator_p_TYP = renderer_p_TYP;
 type editor_p_TYP = renderer_p_TYP;
-export type { renderer_p_TYP, hydrator_p_TYP, editor_p_TYP };
+export type { renderer_p_TYP, hydrator_p_TYP, editor_p_TYP, };

@@ -1,8 +1,8 @@
 {
   "name": "content-engine-lib",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "A lightweight library for content engine functionality",
-  "keywords": ["content", "engine", "library"],
+  "keywords": ["content", "engine", "library", "content-engine"],
   "author": "Coreutility",
   "license": "MIT",
   "type": "module",
@@ -24,6 +24,7 @@
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "import": "./dist/index.es.js",
       "require": "./dist/index.umd.js"
     }
