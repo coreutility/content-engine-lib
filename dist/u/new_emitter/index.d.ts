@@ -1,7 +1,7 @@
 import { Emitter } from '../emitter';
 declare const index: () => Emitter<{
     msg: (payload: {
-        /**eg=> `on:change`, `on:add`  etc. */
+        /**eg=> `change`, `add`  etc. */
         type: string;
         /**can pass existing `_p` variable. */
         _p?: any;
@@ -16,6 +16,10 @@ declare const index: () => Emitter<{
             /**eg=> xx776-6564-6547 (Module-Id), text (Module-Type) */
             value: string;
         };
+        /**can be used to pass eg=> `_$p[`data`].curr[`data`],`, `_$p[`data`].curr` */
+        $d?: any;
+        /**can be used to pass eg=> `HTMLElement` */
+        el?: any;
     }) => Promise<void>;
 }>;
-export { index as get_emitter };
+export { index as new_emitter };

@@ -1,6 +1,6 @@
 {
   "name": "content-engine-lib",
-  "version": "1.0.2",
+  "version": "1.0.5",
   "description": "A lightweight library for content engine functionality",
   "keywords": ["content", "engine", "library", "content-engine"],
   "author": "Coreutility",

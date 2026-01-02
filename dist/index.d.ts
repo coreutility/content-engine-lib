@@ -9,6 +9,8 @@ declare const call_0: <K extends "msg">(event: K, ...args: Parameters<{
             key: string;
             value: string;
         };
+        $d?: any;
+        el?: any;
     }) => Promise<void>;
 }[K]>) => Promise<void>;
 declare const listen_1: <K extends "msg">(event: K, fn: {
@@ -21,6 +23,8 @@ declare const listen_1: <K extends "msg">(event: K, fn: {
             key: string;
             value: string;
         };
+        $d?: any;
+        el?: any;
     }) => Promise<void>;
 }[K]) => () => void;
 declare const renderer: (_p: renderer_p_TYP) => Promise<{
@@ -28,7 +32,7 @@ declare const renderer: (_p: renderer_p_TYP) => Promise<{
         data: {
             l: any[];
         } | any;
-    }, _$cb?: {}) => Promise<{
+    }) => Promise<{
         r: string;
         style: string;
         head: string;
@@ -39,7 +43,7 @@ declare const hydrator: (_p: hydrator_p_TYP) => Promise<{
         data: {
             l: any[];
         } | any;
-    }, _$cb?: {}) => Promise<{
+    }) => Promise<{
         r: string;
         style: string;
     }>;
@@ -49,8 +53,6 @@ declare const editor: (_p: editor_p_TYP) => Promise<{
         data: {
             l: any[];
         };
-    }, _$cb?: {
-        change: (_v: any) => any;
     }) => Promise<{
         r: string;
         style: string;
