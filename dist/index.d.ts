@@ -1,4 +1,4 @@
-import { editor_p_TYP, hydrator_p_TYP, renderer_p_TYP } from './u/types';
+import { hydrator_p_TYP, renderer_p_TYP } from './u/types';
 declare const call_0: <K extends "msg">(event: K, ...args: Parameters<{
     msg: (payload: {
         type: string;
@@ -36,6 +36,7 @@ declare const renderer: (_p: renderer_p_TYP) => Promise<{
         r: string;
         style: string;
         head: string;
+        benchmark: any;
     }>;
 }>;
 declare const hydrator: (_p: hydrator_p_TYP) => Promise<{
@@ -44,18 +45,9 @@ declare const hydrator: (_p: hydrator_p_TYP) => Promise<{
             l: any[];
         } | any;
     }) => Promise<{
-        r: string;
-        style: string;
-    }>;
-}>;
-declare const editor: (_p: editor_p_TYP) => Promise<{
-    set: (_$p: {
-        data: {
-            l: any[];
+        benchmark: {
+            time_taken_ms: string;
         };
-    }) => Promise<{
-        r: string;
-        style: string;
     }>;
 }>;
-export { renderer as ce_renderer, hydrator as ce_hydrator, editor as ce_editor, call_0 as ce_call, listen_1 as ce_listen, };
+export { renderer as ce_renderer, hydrator as ce_hydrator, call_0 as ce_call, listen_1 as ce_listen, };
