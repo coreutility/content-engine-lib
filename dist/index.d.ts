@@ -32,8 +32,11 @@ declare const renderer: (_p: renderer_p_TYP) => Promise<{
         data: {
             l: any[];
         } | any;
+        return?: {
+            r?: "full" | "chunk";
+        };
     }) => Promise<{
-        r: string;
+        r: any;
         style: string;
         head: string;
         benchmark: any;
