@@ -205,7 +205,7 @@ let c = {
     }
   }
 };
-const p = h(), k = h(), T = p.on, R = p.emit, O = k.emit, I = k.on, P = async (t) => {
+const k = h(), z = h(), T = k.on, R = k.emit, O = z.emit, I = z.on, P = async (t) => {
   const r = await x();
   return await c.lib.set({ lib: t.lib, run_from: "renderer", lazy_lib: t.lazy_lib }), {
     set: async (e) => {

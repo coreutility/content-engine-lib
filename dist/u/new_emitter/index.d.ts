@@ -5,10 +5,10 @@ declare const index: () => Emitter<{
         type: string;
         /**can pass existing `_p` variable. */
         _p?: any;
-        /**can pass existing `_$p` variable. */
-        _$p?: any;
+        /**can pass existing `_pp` variable. */
+        _pp?: any;
         /**can be used to pass custom data. */
-        custom?: object;
+        custom?: any;
         /**can create condition for listeners */
         where?: {
             /**eg=> @id (Module-Id), @type (Module-Type) */
@@ -16,7 +16,7 @@ declare const index: () => Emitter<{
             /**eg=> xx776-6564-6547 (Module-Id), text (Module-Type) */
             value: string;
         };
-        /**can be used to pass eg=> `_$p[`data`].curr[`data`],`, `_$p[`data`].curr` */
+        /**can be used to pass eg=> `_pp[`data`].curr[`data`],`, `_pp[`data`].curr` */
         $d?: any;
         /**can be used to pass eg=> `HTMLElement` */
         el?: any;

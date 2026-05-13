@@ -3,8 +3,8 @@ declare const call_0: <K extends "msg">(event: K, ...args: Parameters<{
     msg: (payload: {
         type: string;
         _p?: any;
-        _$p?: any;
-        custom?: object;
+        _pp?: any;
+        custom?: any;
         where?: {
             key: string;
             value: string;
@@ -17,8 +17,8 @@ declare const listen_1: <K extends "msg">(event: K, fn: {
     msg: (payload: {
         type: string;
         _p?: any;
-        _$p?: any;
-        custom?: object;
+        _pp?: any;
+        custom?: any;
         where?: {
             key: string;
             value: string;
@@ -28,7 +28,7 @@ declare const listen_1: <K extends "msg">(event: K, fn: {
     }) => Promise<void>;
 }[K]) => () => void;
 declare const renderer: (_p: renderer_p_TYP) => Promise<{
-    set: (_$p: {
+    set: (_pp: {
         data: {
             l: any[];
         } | any;
@@ -43,7 +43,7 @@ declare const renderer: (_p: renderer_p_TYP) => Promise<{
     }>;
 }>;
 declare const hydrator: (_p: hydrator_p_TYP) => Promise<{
-    set: (_$p: {
+    set: (_pp: {
         data: {
             l: any[];
         } | any;
