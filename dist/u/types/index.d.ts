@@ -17,6 +17,8 @@ type renderer_p_TYP = {
         /**http://localhost:5173/src/l/{*}/editor/index.ts */
         editor_src: string;
     };
+    /**eg=> renderer, hydrator, editor */
+    run?: string;
 };
 type hydrator_p_TYP = renderer_p_TYP;
 export type { renderer_p_TYP, hydrator_p_TYP, };
