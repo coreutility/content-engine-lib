@@ -19,6 +19,8 @@ type renderer_p_TYP = {
     };
     /**eg=> renderer, hydrator, editor */
     run?: string;
+    /**can pass custom functions, variables etc*/
+    custom?: any;
 };
 type hydrator_p_TYP = renderer_p_TYP;
 export type { renderer_p_TYP, hydrator_p_TYP, };
